@@ -54,14 +54,14 @@ console.log(JSON.stringify(infoModule, null, 2));
 
 
 function getArgumentList(ASTNodes){
-    let arguments = [];
+    let argumentos = [];
     ASTNodes.forEach((ASTNode) => {
         let name = getArgumentName(ASTNode)
         if(name){
-            arguments.push(name);
+            argumentos.push(name);
         }
     })
-    return arguments;
+    return argumentos;
 }
 
 function getLiteralValue(ASTNode){
