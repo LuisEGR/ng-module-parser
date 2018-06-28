@@ -1,64 +1,45 @@
-// Módulos
 import angular from 'angular';
-import angularFilter from 'angular-filter';
-import modal from '../modal/module';
-import '../../services/acceso-cliente/module';
-import dragDropRelation from '../drag-drop-relation/module';
-import inputTypeMonto from '../../directives/input-type-monto/module';
-import pubSub from '../../services/pub-sub/module.js';
-import stepper from '../stepper/module';
-import impresion from '../impresion/module.js';
-import filtroBigNumber from '../../filters/big-number';
-import inputMenorQue from '../../directives/input-menor-que';
+import '../configuration/config.js';
+import consultaDispositivosServicio from './service.js';
 
-import configuracionTipoUsuario from './configuracion-tipo-usuario';
-import configuracionCuentas from './configuracion-cuentas';
-import configuracionEmpresas from './configuracion-empresas';
-import configuracionFacultades from './configuracion-facultades';
-import configuracionFirmantes from './configuracion-firmantes';
-import configuracionUsuariosDestino from './configuracion-usuarios-destino';
-// Componentes
-import usuariosFacultamientoComp from './component';
-import aplicacionFacultamiento from './aplicacion-facultamiento/component';
-import montosPorCuenta from './montos-por-cuenta/component';
-import limitesOperables from './limites-operables/component';
-import firmantesPersonas from './firmantes-personas/component';
-
-// Servicios
-import usuariosFacultamientoServ
-  from '../../services/usuarios-facultamiento/module';
-import perfilesPatron from '../../services/perfiles-patron/';
-import facultades from '../../services/facultades';
-import consultaFirmantes from '../../services/consulta-firmantes/';
-import etiquetas from './../../services/etiquetas';
-
+/**
+ * @ngdoc overview
+ * @name consultaDispositivosServicio
+ * @description
+ *
+ * # Módulo consultaDispositivosServicio
+ * 
+ * Módulo que proporciona el servicio para consultar los distintos
+ * tipos de dispositivos que se encuentran registrados.
+ * 
+ * # Servicios
+ * - {@link consultaDispositivosServicio.consultaDispositivosServicio 
+ * consultaDispositivosServicio}
+ *
+ * @example
+ * <h2>Consultar la lista de tipos de dispositivos</h2>
+ * <pre>
+ * import angular from 'angular';
+ * // importar el módulo para que pueda ser inyectado como dependencia
+ * import './services/consulta-dispositivos/';
+ * // crear el módulo de la aplicación e inyectar el módulo 
+ * // consultaDispositivosServicio
+ * angular.module('app', ['consultaDispositivosServicio'])
+ *   .controller('mainCtrl', ['consultaDispositivosServicio',
+ *    function(consultaDispositivosServicio) {
+ *      
+ *      consultaDispositivosServicio.obtenerTiposDispositivos()
+ *        .then(function(dispositivos) {
+ *          // La consulta se realizó exitosamente.
+ *          console.log(dispositivos);
+ *        }).catch(function(error) {
+ *          // La consulta no se realizó exitosamente.
+ *          console.log(error.mensaje, error.error);
+ *        });
+ *    }]);
+ * </pre>
+ */
 export default angular
-  .module('usuariosFacultamiento', [
-    'accesoCliente',
-    angularFilter,
-    impresion,
-    stepper,
-    modal,
-    pubSub,
-    dragDropRelation,
-    inputTypeMonto,
-    usuariosFacultamientoServ,
-    configuracionTipoUsuario,
-    configuracionCuentas,
-    configuracionEmpresas,
-    configuracionFacultades,
-    configuracionFirmantes,
-    configuracionUsuariosDestino,
-    perfilesPatron,
-    facultades,
-    consultaFirmantes,
-    etiquetas,
-    filtroBigNumber,
-    inputMenorQue,
-  ])
-  .component('usuariosFacultamiento', usuariosFacultamientoComp)
-  .component('firmantesPersonas', firmantesPersonas)
-  .component('montosPorCuenta', montosPorCuenta)
-  .component('limitesOperables', limitesOperables)
-  .component('aplicacionFacultamiento', aplicacionFacultamiento)
+  .module('consultaDispositivosServicio', ['config'])
+  .service('consultaDispositivosServicio', consultaDispositivosServicio)
   .name;

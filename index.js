@@ -17,6 +17,7 @@ function parse(program, options) {
 
     function getArgumentList(ASTNodes) {
         let argumentos = [];
+        if(!ASTNodes) return argumentos;
         ASTNodes.forEach((ASTNode) => {
             let name = getArgumentName(ASTNode)
             if (name) {
