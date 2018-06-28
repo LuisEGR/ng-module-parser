@@ -1,6 +1,8 @@
 # ng-module-parser
 
-	This js module is used for extracting information about a js file that contains an AngularJS Module where the components/directives/services/etc. are declared
+	This js module is used for extracting information about a js file that 
+    contains an AngularJS Module where the components/directives/services/etc. 
+    are declared
 
 
 
