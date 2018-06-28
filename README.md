@@ -95,8 +95,18 @@ export default angular
   .name;
 ```
 
-Module parsed:
+#### Parsing:
 
+```js
+const fs = require('fs');
+const moduleParser = require('./index.js');
+let program = fs.readFileSync('./example_module.js', 'utf8');
+
+let infoModule = moduleParser.parse(program);
+console.log(JSON.stringify(infoModule, null, 2));
+```
+
+#### Result **infoModule**:
 ```json
 {
   "name": "usuariosFacultamiento",
