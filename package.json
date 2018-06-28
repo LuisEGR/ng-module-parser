@@ -1,0 +1,22 @@
+{
+  "name": "ng-module-parser",
+  "version": "1.0.0",
+  "description": "AngularJs Modules contents extracting with AST",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisEGR/ng-module-parser.git"
+  },
+  "author": "Luis E. Gonzalez R.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuisEGR/ng-module-parser/issues"
+  },
+  "homepage": "https://github.com/LuisEGR/ng-module-parser#readme",
+  "dependencies": {
+    "acorn": "^5.7.1"
+  }
+}
