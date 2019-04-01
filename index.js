@@ -17,7 +17,6 @@ function parse(program, options) {
 
     function getArgumentList(ASTNodes) {
         let argumentos = [];
-        if(!ASTNodes) return argumentos;
         ASTNodes.forEach((ASTNode) => {
             let name = getArgumentName(ASTNode)
             if (name) {
@@ -43,32 +42,32 @@ function parse(program, options) {
 
     walk.ancestor(acorn.parse(program, options), {
         CallExpression(_, ancestors) {
-
-            if (_.callee.property.name == 'module') {
-                infoModule.name = getLiteralValue(_.arguments[0]);
-                infoModule.dependencies = getArgumentList(_.arguments[1].elements);
+            if(_.callee.property){
+                if (_.callee.property.name == 'module') {
+                    infoModule.name = getLiteralValue(_.arguments[0]);
+                    infoModule.dependencies = getArgumentList(_.arguments[1].elements);
+                }
+    
+                if (_.callee.property.name == 'component') {
+                    infoModule.components.push(getLiteralValue(_.arguments[0]));
+                }
+    
+                if (_.callee.property.name == 'directive') {
+                    infoModule.directives.push(getLiteralValue(_.arguments[0]));
+                }
+    
+                if (_.callee.property.name == 'service') {
+                    infoModule.services.push(getLiteralValue(_.arguments[0]));
+                }
+    
+                if (_.callee.property.name == 'factory') {
+                    infoModule.factories.push(getLiteralValue(_.arguments[0]));
+                }
+    
+                if (_.callee.property.name == 'constant') {
+                    infoModule.constants.push(getLiteralValue(_.arguments[0]));
+                }
             }
-
-            if (_.callee.property.name == 'component') {
-                infoModule.components.push(getLiteralValue(_.arguments[0]));
-            }
-
-            if (_.callee.property.name == 'directive') {
-                infoModule.directives.push(getLiteralValue(_.arguments[0]));
-            }
-
-            if (_.callee.property.name == 'service') {
-                infoModule.services.push(getLiteralValue(_.arguments[0]));
-            }
-
-            if (_.callee.property.name == 'factory') {
-                infoModule.factories.push(getLiteralValue(_.arguments[0]));
-            }
-
-            if (_.callee.property.name == 'constant') {
-                infoModule.constants.push(getLiteralValue(_.arguments[0]));
-            }
-
         }
     });
     return infoModule;
