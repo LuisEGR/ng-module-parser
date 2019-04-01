@@ -45,7 +45,8 @@ function parse(program, options) {
             if(_.callee.property){
                 if (_.callee.property.name == 'module') {
                     infoModule.name = getLiteralValue(_.arguments[0]);
-                    infoModule.dependencies = getArgumentList(_.arguments[1].elements);
+                    let deps = _.arguments[1] ? _.arguments[1].elements:[];
+                    infoModule.dependencies = getArgumentList(deps);
                 }
     
                 if (_.callee.property.name == 'component') {
