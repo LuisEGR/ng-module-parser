@@ -1,6 +1,6 @@
 {
   "name": "ng-module-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AngularJs Modules contents extracting with AST",
   "main": "index.js",
   "scripts": {
